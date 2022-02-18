@@ -1,0 +1,60 @@
+<div class="card">
+    <h2 [ngStyle]="{
+        color:  card.title.length < 5 ? 'black' : 'green',
+        fontWeight: card.title.length < 7 ? 'normal' : 'bold'
+    }">[[ index ]] [[ card.title ]]</h2>
+    <p >[[ card.text ]]</p>
+    <!-- <strong>Number: [[ number ]]</strong>
+    <em>[[ array ]]</em>
+    <pre>[[ obj | json]]</pre> -->
+
+
+
+
+
+    <!-- <p class="text" [ngClass]="{
+        blue: textColor === 'blue',
+        green: textColor === 'green',
+        red: textColor === 'red'
+    }">[[ getInfo() ]]</p> -->
+
+    <p 
+        class="text" 
+        [class.blue]="textColor === 'blue'"
+        [class.red]="textColor === 'red'"
+        [class.green]="textColor === 'green'"
+    >
+        [[card.text]]
+    </p>
+
+
+    <div class="buttons">
+        <button (click)="textColor='blue'">Set Blue</button>
+        <button (click)="textColor='green'">Set Green</button>
+        <button (click)="textColor='red'">Set Red</button>
+    </div>
+
+    <!-- <div>
+        <img [src]="imgUrl">
+        <br>
+        <button [disabled]="disabled">Enable</button>
+    </div> -->
+
+
+    <div class="buttons">
+        <button (click)="changeTitle()">Change title</button>
+        <button (click)="card.title = 'Inline title'">Change title inline</button>
+    </div>
+
+    <div>
+        <strong>[[ cardDate | date: 'dd MMMM yyyy HH:mm:ss':undefined:'ru' ]]</strong>
+    </div>
+
+    <!-- <div class="">
+        <input type="text" #myInput (input)="inputHandler(myInput.value)" [value]="title">
+    </div> -->
+
+    <div>
+        <input type="text" [(ngModel)]="card.title" (ngModelChange)="changeHandler()">
+    </div>
+</div>
